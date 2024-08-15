@@ -1,9 +1,5 @@
 # AWS Alerts
 
--   Founder: Abdullah Khawer (LinkedIn: https://www.linkedin.com/in/abdullah-khawer/)
-
-## Introduction
-
 AWS Alerts is a monitoring and alerting solution for AWS cloud to monitor resources for 30+ AWS services and send alerts related to failures, errors, warnings and terminations on Slack.
 
 You can update provided variable values to enable or disable alerts for different AWS services.
