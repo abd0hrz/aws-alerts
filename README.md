@@ -1,97 +1,104 @@
 # AWS Alerts
 
-AWS Alerts is a monitoring and alerting solution for AWS cloud to monitor resources for 30+ AWS services and send alerts related to failures, errors, warnings and terminations on Slack.
+**AWS Alerts** is an automated monitoring and alerting solution for AWS Cloud. It supports 30+ AWS services and sends alerts to Slack for **failures**, **errors**, **warnings**, and **terminations**. You can enable alerts per service using provided configuration variables.
 
-You can update provided variable values to enable or disable alerts for different AWS services.
+> ⚠️ All services are disabled by default. You must explicitly enable the alerts you need.
 
-By default, all AWS services are disabled and you have to choose which one to enable.
+---
 
-❓ Why did I develop this solution?
+## ❓ Why AWS Alerts?
 
-Because sometimes infrastructure level alerts can be missed which can be collected more efficiently using AWS CloudWatch/AWS EventBridge events, AWS CloudWatch alarms and AWS service specific event subscriptions but manually creating all the required resources to enable all those alerts can take a lot of time and effort.
+Setting up infrastructure-level alerting manually across AWS services can be time-consuming and error-prone. While AWS offers tools like **CloudWatch**, **EventBridge**, and **service-specific event subscriptions**, wiring them together for complete coverage involves significant effort.
 
-Below you can find examples of AWS Alerts on Slack as notifications:
-- AWS CloudWatch/AWS EventBridge Event
+**AWS Alerts** simplifies this by:
+- Automating the creation of required resources
+- Using Infrastructure as Code (Terraform or CloudFormation)
+- Providing a central alert delivery system via Slack
 
-![AWS CloudWatch/AWS EventBridge Event](assets/i1.png)
+---
 
-- AWS CloudWatch Alarm
+## 📸 Example Notifications
 
-![AWS CloudWatch Alarm](assets/i1.png)
+- **CloudWatch/EventBridge Event Notification**
 
-## Supported IaC (Infrastructure as Code) Tools:
+  ![EventBridge](assets/i1.png)
 
-- Terraform
-- AWS CloudFormation
+- **CloudWatch Alarm Notification**
 
-## Supported AWS Services:
+  ![Alarm](assets/i1.png)
 
-Following are the 30+ AWS services for which you can enable alerts for failures, errors, warnings and terminations notifications:
+---
 
--   `AWS Batch`
--   `AWS CodeBuild (CB)`
--   `AWS CodeDeploy (CD)`
--   `AWS CodePipeline (CP)`
--   `AWS Config`
--   `AWS Data Lifecycle Manager (DLM)`
--   `AWS Database Migration Service (DMS)`
--   `AWS DataSync (DS)`
--   `AWS Elastic Block Store (EBS)`
--   `AWS Elastic Compute Cloud (EC2) Auto Scaling`
--   `AWS Elastic Compute Cloud (EC2)`
--   `AWS Elastic Container Service (ECS)`
--   `AWS Elastic Map Reduce (EMR)`
--   `AWS Elemental`
--   `AWS GameLift (GL)`
--   `AWS Glue`
--   `AWS Health`
--   `AWS Internet of Things (IoT)`
--   `AWS Key Management Service (KMS)`
--   `AWS Lambda`
--   `AWS Macie`
--   `AWS OpsWorks`
--   `AWS Redshift`
--   `AWS Relation Database Service (RDS)`
--   `AWS SageMaker`
--   `AWS Server Migration Service (SMS)`
--   `AWS Signer`
--   `AWS Step Functions (SF)`
--   `AWS Systems Manager (SSM)`
--   `AWS Transcribe`
--   `AWS Trusted Advisor (TA)`
+## 🛠️ Supported Infrastructure as Code Tools
 
-## Components Used
+- **Terraform**
+- **AWS CloudFormation**
 
-Following are the components used in this solution:
+---
 
--   Terraform template for all of the resources deployment in case you don't want to use AWS CloudFormation template.
--   AWS CloudFormation template for all of the resources deployment as stack in case you don't want to use Terraform template.
--   Python script developed in Python 3.12 having the logic to send formatted AWS Alerts to Slack.
--   Boto3 for AWS resources access in Python.
--   AWS Lambda function to execute the above mentioned Python script.
--   AWS IAM role used by the Lambda function with least privileges.
--   AWS Lambda Invoke Permission for AWS SNS topic.
--   AWS CloudWatch/AWS EventBridge events for the failures, errors, warnings and terminations alerts of various AWS services triggered upon events.
--   AWS CloudWatch alarms for the failures of AWS Lambda functions.
--   AWS RDS and DMS event subscriptions for the failures, errors, warnings and terminations of AWS RDS and DMS resources respectively.
--   AWS SNS topic for receiving and sending alerts to Slack for failures, errors, warnings and terminations alerts of various AWS services.
--   AWS SNS topic policy for the above mentioned AWS SNS topic with sufficient permissions to allow publishing of messages on this AWS SNS topic.
+## ✅ Supported AWS Services
 
-## Prerequisites
+You can enable alerting for over 30 AWS services, including:
 
-Following are the prerequisites to be met once before you begin:
+- AWS Batch  
+- AWS CodeBuild / CodeDeploy / CodePipeline  
+- AWS Config  
+- AWS Data Lifecycle Manager  
+- AWS DMS (Database Migration Service)  
+- AWS DataSync  
+- AWS EBS / EC2 / EC2 Auto Scaling  
+- AWS ECS / EMR  
+- AWS Elemental  
+- AWS GameLift  
+- AWS Glue  
+- AWS Health  
+- AWS IoT  
+- AWS KMS  
+- AWS Lambda  
+- AWS Macie  
+- AWS OpsWorks  
+- AWS RDS / Redshift  
+- AWS SageMaker  
+- AWS Server Migration Service  
+- AWS Signer  
+- AWS Step Functions  
+- AWS Systems Manager  
+- AWS Transcribe  
+- AWS Trusted Advisor
 
-- Following tools should be installed on your system:
-    - Git
-    - AWS CLI
-    - Terraform
-    - Python 3.12 with `pip`
-- A Slack Webhook URL is created for the channel where you want to receive the alerts either using general incoming webhook or app incoming webhook.
-- A parameter should be created on AWS SSM Parameter Store with the name of your choice and it should have the Slack Webhook URL as its value.
+---
 
-## Deployment and Usage Notes
+## 🔧 Components Used
 
-### Using Terraform:
+- **Terraform template** for resource provisioning
+- **CloudFormation template** as an alternative IaC option
+- **AWS Lambda (Python 3.12)** using:
+  - Boto3
+  - Custom Slack message formatting
+- **IAM Role** with least privileges for Lambda
+- **SNS Topic** to aggregate and forward events to Slack
+- **CloudWatch/EventBridge** rules to capture alerts
+- **RDS/DMS event subscriptions**
+- **SSM Parameter Store** for securely storing the Slack Webhook URL
+
+---
+
+## 🧰 Prerequisites
+
+Before deploying, ensure the following are installed/configured:
+
+- [Git](https://git-scm.com/)
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [Terraform](https://www.terraform.io/)
+- Python 3.12 with `pip`
+- A **Slack Webhook URL** for the target Slack channel
+- A **SSM Parameter** with the Slack Webhook URL as its value
+
+---
+
+## 🚀 Deployment & Usage
+
+### 📦 Deploy Using Terraform
 
 Following are the steps to successfully deploy and use this solution:
 -   Fork this repository from the master branch.
