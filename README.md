@@ -110,7 +110,7 @@ Following are the steps to successfully deploy and use this solution:
 -   If the Terraform change plan looks good, enter `yes` to create the resources.
 -   Wait for the Terraform to finish creating all the resources.
 
-### Using AWS CloudFormation:
+### 📦 Deploy Using AWS CloudFormation
 
 Following are the steps to successfully deploy and use this solution:
 -   Fork this repository from the master branch.
@@ -129,5 +129,27 @@ Following are the steps to successfully deploy and use this solution:
 -   Under `Review`, select `I acknowledge that AWS CloudFormation might create IAM resources with custom names.` and click `Create`.
 -   Wait for the stack to change its `Status` to `CREATE_COMPLETE`.
 
-Note: You can subscribe other endpoints to the AWS SNS topic created for alerts if needed.
+ℹ️ You can subscribe other endpoints to the AWS SNS topic created for alerts if needed.
+
+## 🤝 Contributions
+
+Contributions are welcome and appreciated!
+
+If you'd like to contribute to **AWS Alerts**, here’s how you can help:
+
+1. **Fork** the repository
+2. **Create a new branch** for your feature or fix
+3. Make your changes
+4. **Submit a pull request** with a clear description of what you’ve done
+
+You can contribute by:
+- Adding support for more AWS services
+- Improving existing alert logic or formatting
+- Fixing bugs or improving performance
+- Updating documentation or usage examples
+
+Please make sure your contributions follow the coding and security best practices.
+
+> 📬 For major changes, feel free to open an issue first to discuss your idea.
+
 
