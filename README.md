@@ -12,10 +12,12 @@ Because sometimes infrastructure level alerts can be missed which can be collect
 
 Below you can find examples of AWS Alerts on Slack as notifications:
 - AWS CloudWatch/AWS EventBridge Event
-<img width="482" alt="Screenshot Sample 1" src="https://github.com/abdullahkhawer/aws-alerts/assets/27900716/b5c6e43d-a465-4148-8011-5aa0addd83b6">
+
+![AWS CloudWatch/AWS EventBridge Event](assets/i1.png)
 
 - AWS CloudWatch Alarm
-<img width="542" alt="Screenshot Sample 2" src="https://github.com/abdullahkhawer/aws-alerts/assets/27900716/db4cb466-261f-48e3-b2ec-078d92639968">
+
+![AWS CloudWatch Alarm](assets/i1.png)
 
 ## Supported IaC (Infrastructure as Code) Tools:
 
@@ -122,9 +124,3 @@ Following are the steps to successfully deploy and use this solution:
 
 Note: You can subscribe other endpoints to the AWS SNS topic created for alerts if needed.
 
-## Troubleshooting Notes
-
--   If no notifications are received or the AWS CloudWatch alarm isn't working, try resubscribing to the AWS SNS topic or updating the notification action in AWS CloudWatch alarm.
--   If some other issue occurs, kindly create an issue on this GitHub repository for its resolution or any help.
-
-### Any contributions, improvements and suggestions will be highly appreciated.
